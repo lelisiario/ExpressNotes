@@ -12,16 +12,18 @@ app.use(express.static('public'));
 
 // Helper function to read notes from db.json
 const readNotesFromFile = () => {
-  const filePath = path.join(__dirname, 'Develop', 'db', 'db.json');
+  const filePath = path.join(__dirname, 'db', 'db.json');
   const data = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(data);
 };
 
 // Helper function to write notes to db.json
 const writeNotesToFile = (notes) => {
-  const filePath = path.join(__dirname, 'Develop', 'db', 'db.json');
+  const filePath = path.join(__dirname, 'Develop', 'db.json');
   fs.writeFileSync(filePath, JSON.stringify(notes, null, 2));
 };
+
+
 
 // GET /api/notes - Get all notes
 app.get('/api/notes', (req, res) => {
@@ -50,12 +52,12 @@ app.delete('/api/notes/:id', (req, res) => {
 
 // HTML route to serve notes.html
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Develop', 'public', 'notes.html'));
+  res.sendFile(path.join(__dirname, 'public', 'notes.html'));
 });
 
 // HTML route to serve index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Develop', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start the server
