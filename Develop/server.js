@@ -19,7 +19,7 @@ const readNotesFromFile = () => {
 
 // Helper function to write notes to db.json
 const writeNotesToFile = (notes) => {
-  const filePath = path.join(__dirname, 'Develop', 'db.json');
+  const filePath = path.join(__dirname, 'db', 'db.json');
   fs.writeFileSync(filePath, JSON.stringify(notes, null, 2));
 };
 
